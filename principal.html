@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Principal - Cooperativa</title>
+    <link rel="stylesheet" href="pincipal.css">
+</head>
+<body>
+    <div class="sidebar">
+        <div class="logo">
+            <div class="logo-icon">C</div>
+            <div class="logo-text">Cooperativa</div>
+        </div>
+        <h2>Cooperativa</h2>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#nosotros">Nosotros</a></li>
+            <li><a href="#informacion">Información</a></li>
+            <li><a href="#quesomos">Qué Somos</a></li>
+        </ul>
+        <div class="button-group">
+            <button onclick="location.href='index.html'">Iniciar Sesión</button>
+            <button onclick="location.href='index.html'">Registrar</button>
+        </div>
+    </div>
+    <div class="content">
+        <section id="home" class="centered-section">
+            <div class="main-logo">
+                <div class="main-logo-icon"><h1 class="logo-text">C</h1></div>
+                <h1>Bienvenidos a Nuestra Cooperativa</h1>
+            </div>
+            <h2 class="slogan">Unidos por un Futuro Mejor</h2>
+            <p>Somos una cooperativa dedicada a proporcionar 
+            servicios de alta calidad a nuestros miembros. 
+            Nos enorgullece ofrecer soluciones innovadoras 
+            que ayudan a nuestros socios a alcanzar sus objetivos. 
+            Únete a nosotros y descubre las ventajas de formar 
+            parte de nuestra comunidad cooperativa.</p>
+        </section>
+        <section id="nosotros" class="side-by-side-section">
+            <div class="text-content">
+                <h1>Nosotros</h1>
+                <p>Somos una comunidad comprometida con el desarrollo
+                y el bienestar de nuestros miembros. Nuestra 
+                cooperativa se basa en principios de colaboración,
+                responsabilidad y sostenibilidad. Trabajamos juntos 
+                para crear oportunidades y mejorar la calidad de vida
+                de todos nuestros socios. Con una trayectoria sólida y 
+                una visión hacia el futuro, estamos aquí para apoyar 
+                tus sueños y proyectos.</p>
+            </div>
+            <div class="image-placeholder">
+                <div class="custom-logo">
+                    <div class="logo-ico">N</div>
+                    <div class="logo-tex">Nosotros para Ti</div>
+                </div>
+            </div>
+        </section>
+        <section id="informacion" class="side-by-side-section">
+            <div class="text-content">
+                <h1>Información</h1>
+                <p>Nuestra cooperativa ofrece una amplia gama de 
+                servicios y beneficios para nuestros miembros, 
+                incluyendo asesoramiento financiero, oportunidades 
+                de inversión, programas de educación y capacitación, 
+                y acceso a una red de apoyo comunitario. Estamos 
+                dedicados a proporcionar la información más actualizada 
+                y relevante para ayudar a nuestros socios a tomar 
+                decisiones informadas y alcanzar sus metas.</p>
+            </div>
+            <div class="image-placeholder">
+                <div class="custom-logo">
+                    <div class="logo-ico">I</div>
+                    <div class="logo-tex">Te Damos La Mejor Información</div>
+                </div>
+            </div>
+        </section>
+        <section id="quesomos" class="side-by-side-section">
+            <div class="text-content">
+                <h1>Qué Somos</h1>
+                <p>Somos una entidad que se dedica a promover el bienestar
+                y el progreso de nuestros miembros mediante una gestión 
+                responsable y transparente. Ofrecemos servicios 
+                financieros, educativos y de asesoría, con el objetivo 
+                de fortalecer la capacidad de nuestros socios para mejorar
+                su calidad de vida. Nuestra misión es ser un referente de
+                confianza y apoyo constante en la consecución de sus metas.</p>
+            </div>
+            <div class="image-placeholder">
+                <div class="custom-logo">
+                    <div class="logo-ico">Q</div>
+                    <div class="logo-tex">Somos Tu Futuro</div>
+                </div>
+            </div>
+        </section>
+        <footer>
+            <div class="redes-sociales">
+                <p>Contáctanos a través de:</p>
+                <ul class="contact-info">
+                    <li><a href="mailto:contacto@cooperativa.com" target="_blank">
+                        <b>Gmail</b>
+                    </a></li>
+                    <li><a href="https://wa.me/123456789" target="_blank">
+                    <b>WhatsApp</b>
+                    </a></li>
+                    <li><a href="https://www.instagram.com/cooperativa" target="_blank">
+                    <b>Instagram</b>
+                    </a></li>
+                    <li><a href="https://www.facebook.com/cooperativa" target="_blank">
+                    <b>Facebook</b>
+                    </a></li>
+                </ul>
+            </div>
+            <div class="contact-info">
+                <ul>
+                    <li><a href="#">Contacto</a></li>
+                    <li><a href="#">Soporte</a></li>
+                </ul>
+            </div>
+        </footer>
+    </div>
+    <script>
+        
+        
+        
+                document.addEventListener('DOMContentLoaded', function () {
+            const logoText = document.querySelector('.logo-text');
+            let originalText = 'C';
+            let newText = 'Cooperativa';
+            let currentText = originalText;
+
+            setInterval(() => {
+                currentText = (currentText === originalText) ? newText : originalText;
+                logoText.textContent = currentText;
+            }, 1000);
+        });
+        
+         document.addEventListener('DOMContentLoaded', function () {
+            const logoText = document.querySelector('.main-logo-icon h1');
+            const texts = ['C', 'O', 'O', 'P', 'E', 'R', 'A', 'T', 'I', 'V', 'A'];
+            let index = 0;
+
+            setInterval(() => {
+                logoText.textContent = texts[index];
+                index = (index + 1) % texts.length;
+            }, 1000);
+        });
+        
+    
+        
+          document.addEventListener('DOMContentLoaded', function () {
+            // Secuencias de letras para cada grupo de elementos
+            const sequences = [
+                ['N', 'O', 'S', 'O', 'T', 'R', 'O', 'O'],
+                ['I', 'N', 'F', 'O', 'R', 'M', 'A', 'C', 'I', 'O', 'N'],
+                ['Q', 'U', 'E', 'S', 'O', 'M', 'O', 'S']
+            ];
+
+            // Selecciona todos los elementos con la clase '.logo-ico'
+            const logoTexts = document.querySelectorAll('.logo-ico');
+
+            logoTexts.forEach((logoText, i) => {
+                const texts = sequences[i];
+                let index = 0;
+
+                setInterval(() => {
+                    logoText.textContent = texts[index];
+                    index = (index + 1) % texts.length;
+                }, 1000);
+            });
+        });
+    </script>
+</body>
+</html>
+
+    
+
+
+

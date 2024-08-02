@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe de Empleado</title>
+    
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+            text-align: center;
+        }
+
+        .buscar-empleado {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-bottom: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .buscar-empleado:hover {
+            background-color: #45a049;
+        }
+
+        .busqueda-container {
+            margin-bottom: 20px;
+        }
+
+        .busqueda-container input[type="text"] {
+            padding: 10px;
+            width: 300px; /* Ajustar el ancho según sea necesario */
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        .empleado-info {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+
+        .empleado-info-section {
+            width: 48%;
+            background-color: #f9f9f9;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+        }
+
+        .empleado-info-section h3 {
+            margin-top: 0;
+            color: #555;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 10px;
+        }
+
+        .empleado-info-section p {
+            margin: 8px 0;
+            color: #666;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 8px;
+            color: #777;
+        }
+
+        @media (max-width: 768px) {
+            .empleado-info {
+                flex-direction: column;
+            }
+
+            .empleado-info-section {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Informe de Empleado</h2>
+
+        <div class="busqueda-container">
+            <input type="text" id="inputBuscarEmpleado" placeholder="Ingrese nombre del empleado">
+            <button class="buscar-empleado" onclick="buscarEmpleado()">Buscar Empleado</button>
+        </div>
+
+        <div class="empleado-info">
+            <div class="empleado-info-section">
+                <h3>Datos del Empleado</h3>
+                <p><strong>Nombre:</strong> <span id="nombreEmpleado"></span></p>
+                <p><strong>Apellido:</strong> <span id="apellidoEmpleado"></span></p>
+                <p><strong>Correo:</strong> <span id="correoEmpleado"></span></p>
+                <p><strong>Dirección:</strong> <span id="direccionEmpleado"></span></p>
+                <p><strong>Teléfono:</strong> <span id="telefonoEmpleado"></span></p>
+                <p><strong>Cédula:</strong> <span id="cedulaEmpleado"></span></p>
+                <p><strong>Puesto:</strong> <span id="puestoEmpleado"></span></p>
+                <p><strong>Nómina:</strong> <span id="nominaEmpleado"></span></p>
+                <p><strong>Género:</strong> <span id="generoEmpleado"></span></p>
+                <p><strong>Edad:</strong> <span id="edadEmpleado"></span></p>
+                <p><strong>Carrera:</strong> <span id="carreraEmpleado"></span></p>
+            </div>
+
+            <div class="empleado-info-section">
+                <h3>Ventas Realizadas</h3>
+                <ul id="listaVentas">
+                    <!-- Aquí se agregarán dinámicamente las ventas -->
+                </ul>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+    
+        document.addEventListener('DOMContentLoaded', function() {
+    // Simulación de datos de empleado y ventas (sustituir con datos reales obtenidos del backend)
+    const empleado = {
+        nombre: 'María',
+        apellido: 'González',
+        correo: 'maria@example.com',
+        direccion: 'Avenida Principal #123',
+        telefono: '12345678',
+        cedula: '123456789',
+        puesto: 'Vendedor',
+        nomina: '$2000',
+        genero: 'Femenino',
+        edad: '30',
+        carrera: 'Administración'
+    };
+
+    const ventas = [
+        { numero: 'V001', fecha: '2024-07-17', monto: '$150' },
+        { numero: 'V002', fecha: '2024-07-18', monto: '$200' },
+        { numero: 'V003', fecha: '2024-07-19', monto: '$180' }
+    ];
+
+    // Función para mostrar la información del empleado
+    function mostrarInformacionEmpleado() {
+        document.getElementById('nombreEmpleado').textContent = empleado.nombre;
+        document.getElementById('apellidoEmpleado').textContent = empleado.apellido;
+        document.getElementById('correoEmpleado').textContent = empleado.correo;
+        document.getElementById('direccionEmpleado').textContent = empleado.direccion;
+        document.getElementById('telefonoEmpleado').textContent = empleado.telefono;
+        document.getElementById('cedulaEmpleado').textContent = empleado.cedula;
+        document.getElementById('puestoEmpleado').textContent = empleado.puesto;
+        document.getElementById('nominaEmpleado').textContent = empleado.nomina;
+        document.getElementById('generoEmpleado').textContent = empleado.genero;
+        document.getElementById('edadEmpleado').textContent = empleado.edad;
+        document.getElementById('carreraEmpleado').textContent = empleado.carrera;
+    }
+
+    // Función para mostrar las ventas realizadas por el empleado
+    function mostrarVentasEmpleado() {
+        const listaVentas = document.getElementById('listaVentas');
+
+        // Limpiar lista de ventas antes de agregar nuevas
+        listaVentas.innerHTML = '';
+
+        ventas.forEach(function(venta) {
+            const li = document.createElement('li');
+            li.textContent = `Número de Venta: ${venta.numero}, Fecha: ${venta.fecha}, Monto: ${venta.monto}`;
+            listaVentas.appendChild(li);
+        });
+    }
+
+    // Mostrar información del empleado y sus ventas al cargar la página
+    mostrarInformacionEmpleado();
+    mostrarVentasEmpleado();
+});
+
+function buscarEmpleado() {
+    var nombreEmpleado = document.getElementById('inputBuscarEmpleado').value;
+    // Aquí puedes implementar la lógica para buscar al empleado por su nombre
+    // Puedes usar el valor de 'nombreEmpleado' para realizar la búsqueda correspondiente
+    console.log("Buscar empleado: " + nombreEmpleado); // Placeholder para la lógica de búsqueda
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Sección de Ver Informe de Empleados cargada.');
+
+    // Funcionalidades específicas para la sección de Facturas
+    // Por ejemplo, inicializar una tabla de facturas, añadir eventos, etc.
+});
+
+
+    
+    </script>
+    
+</body>
+</html>

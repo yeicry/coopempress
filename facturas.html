@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facturas</title>
+    
+    <style>
+    
+            #facturasContent {
+            padding: 20px;
+        }
+
+        #searchForm {
+            margin-bottom: 20px;
+        }
+
+        #resultContainer {
+            margin-top: 20px;
+        }
+
+        .factura-item {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+        }
+
+        .factura-item p {
+            margin: 5px 0;
+        }
+
+        .delete-btn, .edit-btn {
+            margin-top: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        .delete-btn {
+            background-color: #f44336;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+
+        .delete-btn:hover {
+            background-color: #da190b;
+        }
+
+        .edit-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+
+        .edit-btn:hover {
+            background-color: #45a049;
+        }
+
+
+        
+    </style>
+    
+    </head>
+<body>
+    <div id="facturasContent">
+        <h2>Facturas</h2>
+        <form id="searchForm">
+            <label for="clientName">Buscar Factura por Cliente:</label>
+            <input type="text" id="clientName" name="clientName">
+            <button type="submit">Buscar</button>
+        </form>
+        <div id="resultContainer">
+            <!-- Aquí se mostrarán los resultados de la búsqueda -->
+        </div>
+        <div id="ventasContainer">
+            <h3>Información de Ventas</h3>
+            <div id="ventasInfo"></div>
+        </div>
+    </div>
+
+    <script src="facturas.js"></script> 
+</body>
+</html>
+

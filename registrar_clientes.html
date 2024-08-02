@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro de Clientes</title>
+   <style>
+    
+               body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form label {
+            display: block;
+            margin-top: 10px;
+        }
+
+        form input, form select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        form button {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        form button:hover {
+            background-color: #45a049;
+        }
+
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Registrar Cliente</h2>
+        <form id="registrarClienteForm">
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" name="nombre" required><br><br>
+
+            <label for="apellido">Apellido:</label>
+            <input type="text" id="apellido" name="apellido" required><br><br>
+
+            <label for="telefono">Teléfono:</label>
+            <input type="text" id="telefono" name="telefono"><br><br>
+
+            <label for="celular">Celular:</label>
+            <input type="text" id="celular" name="celular" required><br><br>
+
+            <label for="nombreNegocio">Nombre del Negocio:</label>
+            <input type="text" id="nombreNegocio" name="nombreNegocio"><br><br>
+
+            <label for="cedula">Cédula:</label>
+            <input type="text" id="cedula" name="cedula" required><br><br>
+
+            <label for="correo">Correo:</label>
+            <input type="email" id="correo" name="correo"><br><br>
+
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion"><br><br>
+
+            <label for="presupuesto">Presupuesto:</label>
+            <input type="number" id="presupuesto" name="presupuesto"><br><br>
+
+            <label for="saldoInicial">Saldo Inicial:</label>
+            <input type="number" id="saldoInicial" name="saldoInicial"><br><br>
+
+            <label for="tipoCuenta">Tipo de Cuenta:</label>
+            <select id="tipoCuenta" name="tipoCuenta" required>
+                <option value="">Selecciona una opción</option>
+                <option value="ahorro">Cuenta de Ahorro</option>
+                <option value="credito">Cuenta de Crédito</option>
+                <option value="corriente">Cuenta Corriente</option>
+            </select><br><br>
+
+            <!-- Campo para mostrar el número de cuenta generado automáticamente -->
+            <label for="numeroCuenta">Número de Cuenta:</label>
+            <input type="text" id="numeroCuenta" name="numeroCuenta" readonly><br><br>
+
+            <label for="genero">Género:</label>
+            <select id="genero" name="genero">
+                <option value="masculino">Masculino</option>
+                <option value="femenino">Femenino</option>
+                <option value="otro">Otro</option>
+            </select><br><br>
+
+            <button type="submit">Registrar Cliente</button>
+        </form>
+    </div>
+
+    <script src="registrar_clientes.js"></script>
+</body>
+</html>
+

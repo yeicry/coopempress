@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estado de Cuenta de Cliente</title>
+    
+    <style>
+            * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+        .busqueda-container {
+            margin-bottom: 20px;
+        }
+
+        .busqueda-container input[type="text"] {
+            width: calc(100% - 120px);
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .buscar-cliente {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-left: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .buscar-cliente:hover {
+            background-color: #45a049;
+        }
+
+        .estado-cuenta {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-cliente p {
+            margin: 10px 0;
+            color: #666;
+        }
+
+        .info-cliente strong {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            background-color: #fff;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+    </style>
+    
+</head>
+<body>
+    <div class="container">
+        <h1>Estado de Cuenta de Cliente</h1>
+        <div class="busqueda-container">
+            <input type="text" id="inputBuscarCliente" placeholder="Ingrese número de cuenta o nombre del cliente">
+            <button class="buscar-cliente" onclick="buscarCliente()">Buscar Cliente</button>
+        </div>
+
+        <div class="estado-cuenta">
+            <h2>Información del Cliente</h2>
+            <div class="info-cliente">
+                <p><strong>Nombre:</strong> <span id="nombreCliente"></span></p>
+                <p><strong>Correo:</strong> <span id="correoCliente"></span></p>
+                <p><strong>Teléfono:</strong> <span id="telefonoCliente"></span></p>
+                <p><strong>Dirección:</strong> <span id="direccionCliente"></span></p>
+                <p><strong>Saldo Actual:</strong> <span id="saldoCliente"></span></p>
+                <p><strong>Estado de Cuenta:</strong> <span id="estadoCuenta"></span></p>
+                <p><strong>Préstamo Pendiente:</strong> <span id="prestamoPendiente"></span></p>
+            </div>
+
+            <h2>Transacciones Recientes</h2>
+            <ul id="listaTransacciones">
+                <!-- Aquí se agregarán dinámicamente las transacciones -->
+            </ul>
+        </div>
+    </div>
+
+    <script src="estado_cuenta_clientes.js"></script>
+</body>
+</html>

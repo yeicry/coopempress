@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informe de Cliente</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 80%;
+            margin: 20px auto;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        h2 {
+            color: #333;
+            border-bottom: 2px solid #333;
+            padding-bottom: 10px;
+        }
+
+        .search-bar {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 20px;
+        }
+
+        .search-bar input[type="text"] {
+            width: 250px;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-right: 10px;
+        }
+
+        .search-bar button {
+            padding: 8px 16px;
+            border: none;
+            background-color: #333;
+            color: white;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .search-bar button:hover {
+            background-color: #555;
+        }
+
+        .cliente-info {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .cliente-info-section {
+            flex: 1;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 0 5px rgba(0,0,0,0.1);
+            margin-right: 20px;
+        }
+
+        .cliente-info-section:last-child {
+            margin-right: 0;
+        }
+
+        h3 {
+            color: #555;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 8px;
+        }
+
+        p {
+            margin: 8px 0;
+            color: #666;
+        }
+
+        strong {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        ul li {
+            margin-bottom: 5px;
+            color: #777;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Informe de Cliente</h2>
+        <div class="search-bar">
+            <input type="text" id="searchCliente" placeholder="Buscar cliente por nombre...">
+            <button id="btnBuscarCliente">Buscar</button>
+        </div>
+        <div class="cliente-info">
+            <div class="cliente-info-section">
+                <h3>Información del Cliente</h3>
+                <p><strong>Nombre:</strong> <span id="nombreCliente"></span></p>
+                <p><strong>Apellido:</strong> <span id="apellidoCliente"></span></p>
+                <p><strong>Teléfono:</strong> <span id="telefonoCliente"></span></p>
+                <p><strong>Celular:</strong> <span id="celularCliente"></span></p>
+                <p><strong>Nombre de Negocio:</strong> <span id="nombreNegocioCliente"></span></p>
+                <p><strong>Cédula:</strong> <span id="cedulaCliente"></span></p>
+                <p><strong>Correo:</strong> <span id="correoCliente"></span></p>
+                <p><strong>Dirección:</strong> <span id="direccionCliente"></span></p>
+                <p><strong>Género:</strong> <span id="generoCliente"></span></p>
+            </div>
+
+            <div class="cliente-info-section">
+                <h3>Facturas del Cliente</h3>
+                <ul id="listaFacturas">
+                    <!-- Aquí se agregarán dinámicamente las facturas -->
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script >
+        
+        document.addEventListener('DOMContentLoaded', function() {
+    // Datos simulados de clientes y facturas
+    const clientes = [
+        {
+            nombre: 'Ana',
+            apellido: 'Martínez',
+            telefono: '23456789',
+            celular: '67890123',
+            nombreNegocio: 'Cafetería Buen Sabor',
+            cedula: '234567890',
+            correo: 'ana@example.com',
+            direccion: 'Avenida Central #789',
+            genero: 'Femenino',
+            facturas: [
+                { numero: 'F004', fecha: '2024-07-20', monto: '$120' },
+                { numero: 'F005', fecha: '2024-07-21', monto: '$180' },
+                { numero: 'F006', fecha: '2024-07-22', monto: '$150' }
+            ]
+        },
+        {
+            nombre: 'Luis',
+            apellido: 'García',
+            telefono: '98765432',
+            celular: '12345678',
+            nombreNegocio: 'Librería El Saber',
+            cedula: '876543210',
+            correo: 'luis@example.com',
+            direccion: 'Calle Falsa #123',
+            genero: 'Masculino',
+            facturas: [
+                { numero: 'F007', fecha: '2024-07-25', monto: '$200' },
+                { numero: 'F008', fecha: '2024-07-26', monto: '$220' }
+            ]
+        }
+    ];
+
+    const searchInput = document.getElementById('searchCliente');
+    const searchButton = document.getElementById('btnBuscarCliente');
+
+    // Función para mostrar la información del cliente
+    function mostrarInformacionCliente(cliente) {
+        document.getElementById('nombreCliente').textContent = cliente.nombre;
+        document.getElementById('apellidoCliente').textContent = cliente.apellido;
+        document.getElementById('telefonoCliente').textContent = cliente.telefono;
+        document.getElementById('celularCliente').textContent = cliente.celular;
+        document.getElementById('nombreNegocioCliente').textContent = cliente.nombreNegocio;
+        document.getElementById('cedulaCliente').textContent = cliente.cedula;
+        document.getElementById('correoCliente').textContent = cliente.correo;
+        document.getElementById('direccionCliente').textContent = cliente.direccion;
+        document.getElementById('generoCliente').textContent = cliente.genero;
+    }
+
+    // Función para mostrar las facturas del cliente
+    function mostrarFacturasCliente(facturas) {
+        const listaFacturas = document.getElementById('listaFacturas');
+        listaFacturas.innerHTML = '';
+
+        facturas.forEach(function(factura) {
+            const li = document.createElement('li');
+            li.textContent = `Número de Factura: ${factura.numero}, Fecha: ${factura.fecha}, Monto: ${factura.monto}`;
+            listaFacturas.appendChild(li);
+        });
+    }
+
+    // Función para buscar y mostrar un cliente por nombre
+    function buscarCliente(nombre) {
+        const cliente = clientes.find(cliente => cliente.nombre.toLowerCase() === nombre.toLowerCase());
+
+        if (cliente) {
+            mostrarInformacionCliente(cliente);
+            mostrarFacturasCliente(cliente.facturas);
+        } else {
+            // Limpiar la información si no se encuentra el cliente
+            document.getElementById('nombreCliente').textContent = 'Cliente no encontrado';
+            document.getElementById('apellidoCliente').textContent = '';
+            document.getElementById('telefonoCliente').textContent = '';
+            document.getElementById('celularCliente').textContent = '';
+            document.getElementById('nombreNegocioCliente').textContent = '';
+            document.getElementById('cedulaCliente').textContent = '';
+            document.getElementById('correoCliente').textContent = '';
+            document.getElementById('direccionCliente').textContent = '';
+            document.getElementById('generoCliente').textContent = '';
+            document.getElementById('listaFacturas').innerHTML = '';
+        }
+    }
+
+    // Manejar el evento del botón de búsqueda
+    searchButton.addEventListener('click', function() {
+        const nombre = searchInput.value.trim();
+        if (nombre) {
+            buscarCliente(nombre);
+        } else {
+            alert('Por favor, ingrese un nombre para buscar.');
+        }
+    });
+});
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('Sección de Ver Informes de Clientes cargada.');
+
+    // Funcionalidades específicas para la sección de Ver Informes de Clientes
+    // Por ejemplo, cargar gráficos, tablas de informes, etc.
+});
+
+        
+    </script>
+</body>
+</html>

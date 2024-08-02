@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inicio de Sesión</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container" id="loginContainer">
+        <div id="loginForm">
+            <h2>Inicio de Sesión</h2>
+            <div class="input-group">
+                <input type="text" id="username" placeholder="Usuario">
+            </div>
+            <div class="input-group">
+                <input type="password" id="password" placeholder="Contraseña">
+            </div>
+            <div class="button-group">
+                <button id="loginButton">Ingresar</button>
+                <button class="register-btn" id="showRegisterButton">Registrar</button>
+            </div>
+        </div>
+
+        <div id="registerForm" style="display: none;">
+            <h2>Registrar</h2>
+            <div class="input-group">
+                <input type="text" id="newUsername" placeholder="Nuevo Usuario">
+            </div>
+            <div class="input-group">
+                <input type="password" id="newPassword" placeholder="Nueva Contraseña">
+            </div>
+            <div class="input-group">
+                <input type="password" id="confirmPassword" placeholder="Confirmar Contraseña">
+            </div>
+            <div class="button-group">
+                <button id="registerButton">Registrar</button>
+                <button class="register-btn" id="showLoginButton">Cancelar</button>
+            </div>
+        </div>
+    </div>
+    <script src="index.js"></script>
+</body>
+</html>
+

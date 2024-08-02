@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+        /* Estilos básicos para ejemplo */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            background-color: #333;
+            padding: 10px;
+        }
+
+        .navbar .logo {
+            color: white;
+            font-size: 20px;
+        }
+
+        .navbar a {
+            color: white;
+            text-decoration: none;
+        }
+
+        .sidebar {
+            width: 200px;
+            background-color: #f4f4f4;
+            height: 100vh;
+            position: fixed;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .sidebar ul li {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .sidebar ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .main-content {
+            margin-left: 220px;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">Mi Empresa</div>
+        <a href="#" id="logoutNavbar">Salir</a>
+    </div>
+    <div class="sidebar">
+        <ul>
+            <li><a href="hacer_ventas.html">Hacer Ventas</a></li>
+            <li><a href="facturas.html">Facturas</a></li>
+            <li><a href="registrar_clientes.html">Registrar Clientes</a></li>
+            <li><a href="registrar_empleados.html">Registrar Empleados</a></li>
+            <li><a href="ver_informes_clientes.html">Ver Informes de Clientes</a></li>
+            <li><a href="ver_informes_empleados.html">Ver Informes de Empleados</a></li>
+            <li><a href="cuenta_ahorros_clientes.html">Cuenta de Ahorros de Clientes</a></li>
+            <li><a href="estado_cuenta_clientes.html">Ver Estado de Cuenta de Clientes</a></li>
+            <li><a href="estado_empleados.html">Ver Estado de Empleados</a></li>
+            <li><a href="principal.html" id="logoutSidebar">Salir</a></li>
+        </ul>
+    </div>
+    <div class="main-content" id="mainContent">
+        <h2>Bienvenido</h2>
+        <p>Selecciona una opción del menú para empezar.</p>
+    </div>
+    
+    <script src="login.js"></script>
+</body>
+</html> 

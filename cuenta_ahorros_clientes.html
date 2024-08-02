@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Ahorro y Débito</title>
+    
+    <style>
+            * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+        }
+
+        select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+
+        .formulario {
+            display: none; /* Ocultar formularios por defecto */
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px #ccc;
+            border-radius: 8px;
+        }
+
+        .formulario h2 {
+            background: #333;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            margin: 0 0 20px;
+            border-radius: 8px 8px 0 0;
+        }
+
+        .formulario input[type="text"], 
+        .formulario input[type="number"], 
+        .formulario input[type="email"], 
+        .formulario input[type="date"], 
+        .formulario select, 
+        .formulario button {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            display: block;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        .formulario select {
+            width: 100%;
+        }
+
+        .formulario button {
+            background: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .formulario button:hover {
+            background: #555;
+        }
+
+        .saldo, .prestamo {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            box-shadow: 0 0 10px #ccc;
+            border-radius: 8px;
+        }
+
+        .saldo h3, .prestamo h3 {
+            text-align: center;
+            margin-top: 0;
+        }
+
+        .saldo input[type="text"], 
+        .prestamo input[type="text"] {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            display: block;
+            font-size: 16px;
+            border-radius: 4px;
+        }
+
+        .saldo button, 
+        .prestamo button {
+            background: #333;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .saldo button:hover, 
+        .prestamo button:hover {
+            background: #555;
+        }
+    
+    </style>
+    
+</head>
+
+
+<body>
+    <div class="container">
+        <h1>Formulario de Ahorro y Débito</h1>
+        <label for="seleccionAccion">Selecciona una acción:</label>
+        <select id="seleccionAccion">
+            <option value="">Seleccione...</option>
+            <option value="ahorro">Formulario de Ahorro</option>
+            <option value="debito">Formulario de Débito</option>
+        </select>
+
+        <form id="ahorroForm" class="formulario">
+            <h2>Formulario de Ahorro</h2>
+            <input type="text" id="nombre" placeholder="Nombre completo" required>
+            <input type="text" id="identificacion" placeholder="Número de identificación" required>
+            <input type="text" id="direccion" placeholder="Dirección" required>
+            <input type="text" id="telefono" placeholder="Número de teléfono" required>
+            <input type="email" id="email" placeholder="Correo electrónico" required>
+            <input type="number" id="montoDeposito" placeholder="Monto a depositar" required>
+            <label for="fechaDeposito">Fecha de la transacción:</label>
+            <input type="date" id="fechaDeposito">
+            <label for="metodoDeposito">Método de depósito:</label>
+            <select id="metodoDeposito">
+                <option value="efectivo">Efectivo</option>
+                <option value="transferencia">Transferencia</option>
+                <option value="cheque">Cheque</option>
+            </select>
+            <button type="button" onclick="confirmarAhorro()">Confirmar Depósito</button>
+        </form>
+
+        <form id="debitoForm" class="formulario">
+            <h2>Formulario de Débito</h2>
+            <input type="text" id="nombreDebito" placeholder="Nombre completo" required>
+            <input type="text" id="identificacionDebito" placeholder="Número de identificación" required>
+            <input type="number" id="montoRetiro" placeholder="Monto a retirar" required>
+            <label for="fechaRetiro">Fecha de la transacción:</label>
+            <input type="date" id="fechaRetiro">
+            <label for="metodoRetiro">Método de retiro:</label>
+            <select id="metodoRetiro">
+                <option value="efectivo">Efectivo</option>
+                <option value="transferencia">Transferencia</option>
+                <option value="cheque">Cheque</option>
+            </select>
+            <input type="text" id="propositoRetiro" placeholder="Propósito del retiro (opcional)">
+            <button type="button" onclick="confirmarDebito()">Confirmar Retiro</button>
+        </form>
+
+        <div class="saldo">
+            <h3>Saldo Actual</h3>
+            <input type="text" id="busquedaSaldo" placeholder="Número de cuenta o Nombre del socio">
+            <button type="button" onclick="verSaldo()">Ver Saldo Actual</button>
+            <p id="saldoActual">$0.00</p>
+            <p id="fechaSaldo">Última actualización: N/A</p>
+        </div>
+
+        <div class="prestamo">
+            <h3>Deuda por Préstamo</h3>
+            <input type="text" id="busquedaPrestamo" placeholder="Número de préstamo o Nombre del socio">
+            <button type="button" onclick="buscarPrestamo()">Buscar</button>
+            <div id="detallesPrestamo">
+                <p id="montoPrestamo">Monto del préstamo: N/A</p>
+                <p id="fechaDesembolso">Fecha de desembolso: N/A</p>
+                <p id="tasaInteres">Tasa de interés: N/A</p>
+                <p id="plazoPrestamo">Plazo del préstamo: N/A</p>
+                <p id="estadoPrestamo">Estado del préstamo: N/A</p>
+                <p id="pagosRealizados">Pagos realizados: N/A</p>
+                <p id="totalPendiente">Total pendiente de pago: N/A</p>
+                <p id="proximoPago">Próximo pago: N/A</p>
+                <p id="cuotasPendientes">Cuotas pendientes: N/A</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="cuenta_ahorros_clientes.js"></script>
+</body>
+</html>
